@@ -1,6 +1,8 @@
 import datetime
-# from picamera import PiCamera
+from picamera import PiCamera
 from time import sleep
+
+camera = PiCamera()
 print('project name')
 name = input()
 print('where to save:')
@@ -41,10 +43,9 @@ def capture():
             sleep(interval)
             print("i take a pic")
             ImgNameWithTime = name + '-' + datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-            print(save_path + "/" + ImgNameWithTime + ".jpg")
-            # camera.resolution = (size)
-            # camera.framerate = 15
-            # camera.capture()
+            camera.resolution = (size)
+            camera.framerate = 15
+            camera.capture(save_path + "/" + ImgNameWithTime + ".jpg")
         else:
             print("not within time frame")
             print('will start at: ',
